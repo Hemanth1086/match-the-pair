@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6a89cc 0%, #4a69bd 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.score-display {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    min-height: 500px;
+}
+
+.tools-panel {
+    width: 200px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tool {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    cursor: grab;
+    transition: all 0.3s;
+    border: 2px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tool:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.tool-name {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.garden-area {
+    flex: 1;
+    background: #ecf0f1;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.garden-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    flex: 1;
+}
+
+.plot {
+    background: #d4e6d4;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 2px solid #c0d6c0;
+    position: relative;
+    overflow: hidden;
+}
+
+.plot:hover {
+    background: #c5e1c5;
+}
+
+.plot-content {
+    font-size: 2.5rem;
+    transition: transform 0.3s;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.water-btn {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.water-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.harvest-btn {
+    background: linear-gradient(to right, #e67e22, #d35400);
+    color: white;
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+.harvest-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 126, 34, 0.4);
+}
+
+.restart-btn {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+}
+
+.instructions {
+    padding: 20px;
+    background: white;
+    border-top: 2px solid #eee;
+}
+
+.instructions h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.instructions-list {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.instructions-list li {
+    margin-bottom: 8px;
+    color: #34495e;
+}
+
+.dragging {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+.water-effect,
+.growth-effect,
+.harvest-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.water-effect {
+    background: rgba(52, 152, 219, 0.3);
+    animation: waterAnimation 1s ease-out;
+}
+
+.growth-effect {
+    background: rgba(46, 204, 113, 0.3);
+    animation: growthAnimation 1s ease-out;
+}
+
+.harvest-effect {
+    background: rgba(231, 126, 34, 0.3);
+    animation: harvestAnimation 1s ease-out;
+}
+
+@keyframes waterAnimation {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes growthAnimation {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes harvestAnimation {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+.points-popup {
+    position: absolute;
+    color: #27ae60;
+    font-size: 1.8rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 100;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: pointsAnimation 1.5s ease-out forwards;
+}
+
+@keyframes pointsAnimation {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    50% { opacity: 0.8; transform: translateY(-30px) scale(1.2); }
+    100% { opacity: 0; transform: translateY(-60px) scale(1); }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .tools-panel {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .tool {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .instructions-list {
+        grid-template-columns: 1fr;
+    }
+}

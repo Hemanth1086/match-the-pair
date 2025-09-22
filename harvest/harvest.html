@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Harvesting Game</title>
+    <link rel="stylesheet" href="harvest.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Plant Harvesting Game</h1>
+            <div class="subtitle">Drag seeds, water plants, and harvest for points!</div>
+            <div class="score-display">Score: <span id="score">0</span></div>
+        </header>
+        
+        <div class="main-content">
+            <div class="tools-panel">
+                <div class="tool" draggable="true" data-type="carrot">
+                    <div class="tool-icon">🥕</div>
+                    <div class="tool-name">Carrot Seeds</div>
+                </div>
+                <div class="tool" draggable="true" data-type="tomato">
+                    <div class="tool-icon">🍅</div>
+                    <div class="tool-name">Tomato Seeds</div>
+                </div>
+                <div class="tool" draggable="true" data-type="corn">
+                    <div class="tool-icon">🌽</div>
+                    <div class="tool-name">Corn Seeds</div>
+                </div>
+                <div class="tool" draggable="true" data-type="watering">
+                    <div class="tool-icon">💧</div>
+                    <div class="tool-name">Watering Can</div>
+                </div>
+            </div>
+            
+            <div class="garden-area" id="gardenArea">
+                <div class="garden-grid">
+                    <div class="plot" data-plot="0"></div>
+                    <div class="plot" data-plot="1"></div>
+                    <div class="plot" data-plot="2"></div>
+                    <div class="plot" data-plot="3"></div>
+                    <div class="plot" data-plot="4"></div>
+                    <div class="plot" data-plot="5"></div>
+                    <div class="plot" data-plot="6"></div>
+                    <div class="plot" data-plot="7"></div>
+                    <div class="plot" data-plot="8"></div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="water-btn" id="waterAll">Water All</button>
+                    <button class="harvest-btn" id="harvestAll">Harvest All</button>
+                    <button class="restart-btn" id="restartGame">Restart Game</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <ul class="instructions-list">
+                <li>Drag seeds from the left panel to empty plots</li>
+                <li>Drag the watering can to water your plants</li>
+                <li>Plants grow through stages: seed → sprout → mature</li>
+                <li>Click on mature plants to harvest them</li>
+                <li>Earn points for each harvested plant</li>
+                <li>Use buttons to water or harvest all plants at once</li>
+                <li>Press restart to begin a new game</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load the JavaScript file -->
+    <script src="harvest.js"></script>
+</body>
+</html>
