@@ -1,0 +1,89 @@
+body {
+  font-family: "Trebuchet MS", sans-serif;
+  text-align: center;
+  background: #e0f7fa;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #0277bd;
+  margin: 8px 0;
+}
+
+#game {
+  width: 600px;
+  height: 300px;
+  margin: 20px auto;
+  border: 3px solid #0288d1;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Bird */
+#bird {
+  width: 50px;
+  height: 50px;
+  background: url("images/bird.png") no-repeat center/contain;
+  position: absolute;
+  top: 120px; /* starts centered vertically */
+  left: 40px;
+  /* gentle bobbing animation */
+  animation: bob 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bob {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* Cloud style */
+.cloud {
+  width: 90px;
+  height: 60px;
+  background: url("images/cloud.png") no-repeat center/contain;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Floating +100 popup */
+.popup {
+  position: absolute;
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 1;
+  animation: popupAnim 1s ease-out forwards;
+}
+
+@keyframes popupAnim {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+
+#score {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #2e7d32;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 18px;
+  background: #0288d1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0277bd;
+}
